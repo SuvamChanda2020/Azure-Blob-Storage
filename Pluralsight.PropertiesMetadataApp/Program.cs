@@ -11,10 +11,10 @@ namespace Pluralsight.PropertiesMetadataApp
   class Program
   {
     // TODO: Add your connection string here
-    private static readonly string _connectionString = "";
+    private static readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=storagesuvamaz204;AccountKey=f0jrzi71tUoOZxy4YpwRp+1Fr6ihsRDXGh5yh7nvTN2oQdCDpjN15s48Q2uEahPpDfIGaaIOqHXtNfBu8N1eZw==;EndpointSuffix=core.windows.net";
 
     private static readonly string _blobContainerName = "authors";
-    private static readonly string _blobName = "thomas.html";
+    private static readonly string _blobName = "suvam.html";
 
     private async static Task Main(string[] args)
     {
