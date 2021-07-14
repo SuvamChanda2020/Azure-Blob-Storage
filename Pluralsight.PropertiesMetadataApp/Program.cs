@@ -56,7 +56,7 @@ namespace Pluralsight.PropertiesMetadataApp
     private static async Task<BlobClient> CreateContainerAndUploadBlobAsync()
     {
       // 1. Create the Blob Container
-      BlobServiceClient blobServiceClient = new BlobServiceClient(_connectionString);
+      BlobServiceClient blobServiceClient = new(_connectionString);
 
       BlobContainerClient blobContainerClient =
           blobServiceClient.GetBlobContainerClient(_blobContainerName);
@@ -79,13 +79,13 @@ namespace Pluralsight.PropertiesMetadataApp
       return blobClient;
     }
 
-    private static async Task SetBlobPropertiesAsync(BlobClient blobClient)
+        private static async Task SetBlobPropertiesAsync(BlobClient blobClient)
     {
       Console.WriteLine($"3. Set blob properties");
 
       BlobProperties blobProperties = await blobClient.GetPropertiesAsync();
 
-      BlobHttpHeaders blobHttpHeaders = new BlobHttpHeaders
+      BlobHttpHeaders blobHttpHeaders = new()
       {
         ContentType = "text/html",
         ContentLanguage = "en-us",
@@ -110,7 +110,7 @@ namespace Pluralsight.PropertiesMetadataApp
       Console.WriteLine($"   - Blob type: {blobProperties.BlobType}");
       Console.WriteLine($"   - CreatedOn: {blobProperties.CreatedOn}");
       Console.WriteLine($"   - LastModified: {blobProperties.LastModified}");
-    }
+        }
 
     private static async Task SetBlobMetadataAsync(BlobClient blobClient)
     {
@@ -141,7 +141,7 @@ namespace Pluralsight.PropertiesMetadataApp
       Console.WriteLine($"7. Deleting blob container '{_blobContainerName}'");
 
       BlobContainerClient blobContainerClient =
-          new BlobContainerClient(_connectionString, _blobContainerName);
+          new(_connectionString, _blobContainerName);
 
       await blobContainerClient.DeleteIfExistsAsync();
     }
